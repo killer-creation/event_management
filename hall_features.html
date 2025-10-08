@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kranti Multipurpose Hall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hall_features.css">
+   </head>
+<body>
+
+<!-- 3D Animated Background -->
+<div id="particles-js"></div>
+<a href="javascript:history.back()" class="back-button">
+    &#8592; Back
+</a>
+
+<header class="hero">
+  <h1>Kranti Multipurpose Hall</h1>
+  <h2>Where Every Event Becomes a Masterpiece.</h2>
+  <p>Your premier destination for grand celebrations and seamless corporate gatherings, offering elegance and state-of-the-art facilities.</p>
+</header>
+
+<h2 class="features-heading">✨ Features Of Hall ✨</h2>
+
+<main class="container">
+  <div class="features-grid">
+    <div class="feature-card"><i class="fas fa-users"></i><h3>Exceptional Capacity</h3><p>Seating for <strong>1500 people</strong>, ideal for grand events.</p></div>
+    <div class="feature-card"><i class="fas fa-utensils"></i><h3>Expansive Dining Area</h3><p>Spacious dining hall for large-scale catering.</p></div>
+    <div class="feature-card"><i class="fas fa-road"></i><h3>Strategic Location</h3><p>Located right off <strong>NH4 highway</strong> for easy access.</p></div>
+    <div class="feature-card"><i class="fas fa-parking"></i><h3>Ample Parking</h3><p>Parking space for hundreds of vehicles.</p></div>
+    <div class="feature-card"><i class="fas fa-laptop-code"></i><h3>Dedicated Working Area</h3><p>Professional workspaces for event management.</p></div>
+    <div class="feature-card"><i class="fas fa-door-closed"></i><h3>Private Rooms</h3><p>Separate rooms for VIPs and preparation.</p></div>
+    <div class="feature-card"><i class="fas fa-toilet"></i><h3>Modern Toilets</h3><p>Hygienic, well-maintained toilet facilities.</p></div>
+    <div class="feature-card"><i class="fas fa-leaf"></i><h3>Sideways Gardening</h3><p>Beautiful gardens for photos & relaxation.</p></div>
+    <div class="feature-card"><i class="fas fa-volume-up"></i><h3>Audio-Visual Support</h3><p>High-quality AV systems for events.</p></div>
+    <div class="feature-card"><i class="fas fa-bolt"></i><h3>24/7 Power Backup</h3><p>Uninterrupted power for smooth flow.</p></div>
+    <div class="feature-card"><i class="fas fa-hands-helping"></i><h3>Professional Staff</h3><p>Trained staff to ensure successful events.</p></div>
+  </div>
+</main>
+
+<footer class="contact-footer">
+  <div class="footer-content">
+    <h3>Contact Us</h3>
+    <p>Book Kranti Multipurpose Hall today and make your special events unforgettable.</p>
+    <div class="contact-details">
+      <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+      <p><i class="fas fa-envelope"></i> info@krantihall.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> NH4 Highway, City, State</p>
+    </div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <div class="copyright">© 2025 Kranti Multipurpose Hall. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<!-- Particles.js Library -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#ffffff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": { "enable": true, "distance": 150, "color": "#00e6e6", "opacity": 0.4, "width": 1 },
+    "move": { "enable": true, "speed": 2, "random": true, "out_mode": "bounce" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": true, "mode": "repulse" },
+      "onclick": { "enable": true, "mode": "push" }
+    },
+    "modes": {
+      "repulse": { "distance": 100, "duration": 0.4 },
+      "push": { "particles_nb": 4 }
+    }
+  },
+  "retina_detect": true
+});
+</script>
+
+<!-- Vanilla Tilt for 3D Floating Cards -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+<script>
+VanillaTilt.init(document.querySelectorAll(".feature-card"), {
+  max: 15,        // max tilt angle
+  speed: 400,     // speed of enter/exit
+  scale: 1.08,    // zoom slightly on hover
+  glare: true,    // enable glare
+  "max-glare": 0.3
+});
+</script>
+
+</body>
+</html>

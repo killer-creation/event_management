@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Registration</title>
+<link rel="stylesheet" href="employee.css">
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</head>
+<body>
+  <!-- Updated action to call Servlet -->
+  <form action="EmployeeRegistrationServlet" method="POST">
+    <div class="back-btn-container">
+        <button type="button" class="back-btn" onclick="goBack()">&larr; Back</button>
+    </div>
+
+    <h2>Employee Registration</h2>
+
+    <label for="emp_name">Full Name</label>
+    <input type="text" id="emp_name" name="emp_name" maxlength="40" required>
+
+    <label for="emp_password">Password</label>
+    <input type="password" id="emp_password" name="emp_password" minlength="6" required>
+
+    <label for="emp_email">Email Address</label>
+    <input type="email" id="emp_email" name="emp_email" maxlength="30" required>
+
+    <label for="emp_mobile">Mobile No</label>
+    <input type="tel" id="emp_mobile" name="emp_mobile" pattern="[0-9]{10}" maxlength="10" required>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" maxlength="100" required>
+    
+    <div class="button-group">
+      <button type="reset" class="btn-cancel">Cancel</button>
+      <button type="submit">Register</button>
+    </div>
+
+    <!-- Login button -->
+    <div>
+      <h2 class="sub-title">Already Registered? Login Here</h2>
+      <a href="employeelogin.html" class="btn-login">Employee Login</a>
+    </div>
+  </form>
+</body>
+</html>

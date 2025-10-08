@@ -1,0 +1,174 @@
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1f 70%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Moving Spotlights */
+  body::before, body::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 70%);
+    animation: moveLights 15s linear infinite;
+    mix-blend-mode: screen;
+  }
+  body::after { animation-duration: 20s; animation-direction: reverse; }
+
+  @keyframes moveLights {
+    0% { transform: rotate(0deg) translate(0,0); }
+    100% { transform: rotate(360deg) translate(0,0); }
+  }
+
+  /* Floating light dots */
+  .bokeh {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    animation: floatBokeh 12s infinite;
+  }
+  .b1 { top: 20%; left: 30%; animation-delay: 0s; }
+  .b2 { top: 50%; left: 70%; animation-delay: 3s; }
+  .b3 { top: 80%; left: 40%; animation-delay: 6s; }
+  .b4 { top: 30%; left: 80%; animation-delay: 9s; }
+
+  @keyframes floatBokeh {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-50px) scale(1.3); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  }
+
+  /* Floating Form */
+  form {
+    position: relative;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.6);
+    width: 350px;
+    animation: floatForm 4s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  @keyframes floatForm {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+  }
+
+  form::before {
+    content: "";
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border-radius: 18px;
+    background: linear-gradient(45deg, #ff6f61, #ffcc70, #42e695, #3bb2b8, #ff6f61);
+    background-size: 400% 400%;
+    z-index: -1;
+    filter: blur(6px);
+    animation: glowingBorder 6s linear infinite;
+  }
+
+  @keyframes glowingBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  form:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.8);
+    animation-play-state: paused;
+  }
+
+  /* Neon Flicker Title */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 
+      0 0 5px #ff6f61,
+      0 0 10px #ff6f61,
+      0 0 20px #ffcc70,
+      0 0 40px #ffcc70;
+    animation: neonFlicker 2.5s infinite alternate;
+  }
+  @keyframes neonFlicker {
+    0%,19%,21%,23%,25%,54%,56%,100% {
+      opacity:1; text-shadow: 0 0 5px #ff6f61,0 0 10px #ff6f61,0 0 20px #ffcc70,0 0 40px #ffcc70;
+    }
+    20%,24%,55% { opacity:0.6; text-shadow:none; }
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
+    color: #fff;
+  }
+
+  input, select {
+    width: 100%; padding: 10px; margin-top: 6px;
+    border: 1px solid #ccc; border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.9);
+    outline: none;
+  }
+
+  button {
+    margin-top: 20px; width: 100%; padding: 12px;
+    background: #6f42c1; color: #fff; border: none; border-radius: 6px;
+    font-size: 16px; cursor: pointer; position: relative; z-index: 1;
+    animation: buttonPulse 2s infinite;
+  }
+  @keyframes buttonPulse {
+    0% { box-shadow: 0 0 0px rgba(111,66,193,0.6); }
+    50% { box-shadow: 0 0 15px rgba(111,66,193,0.9), 0 0 30px rgba(111,66,193,0.5); }
+    100% { box-shadow: 0 0 0px rgba(111,66,193,0.6); }
+  }
+  button:hover {
+    background: #5a32a3; transform: scale(1.08);
+  }
+    /* Back Button */
+  .back-btn {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    z-index: 2;
+  }
+  .back-btn:hover {
+    background: rgba(255,255,255,0.35);
+    transform: scale(1.05);
+  }
+  .back-btn::before {
+    content: "←";
+    margin-right: 5px;
+    font-size: 14px;
+  }

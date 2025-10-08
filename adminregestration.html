@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Registration</title>
+<link rel="stylesheet" href="adminregistration.css">
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</head>
+<body>
+  <!-- Floating background circles -->
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <form action="AdminRegistrationServlet" method="POST">
+    <div class="back-btn-container">
+        <button type="button" class="back-btn" onclick="goBack()">&larr; Back</button>
+    </div>
+    <h2 class="main-title">Admin Registration</h2>
+
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" maxlength="40" required>
+
+    <label for="email_id">Email</label>
+    <input type="email" id="email_id" name="email_id" maxlength="30" required>
+
+    <label for="mobile_no">Mobile No</label>
+    <input type="text" id="mobile_no" name="mobile_no" pattern="[0-9]{10}" maxlength="10" required placeholder="Enter 10-digit number">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" maxlength="15" required>
+    
+    <div class="button-group">
+      <button type="reset" class="btn-cancel">Cancel</button>
+      <button type="submit">Register</button>
+    </div>
+
+    <h2 class="sub-title">Already Registered? Login Here</h2>
+    <a href="adminlogin.html" class="link-btn">Admin Login</a>
+  </form>
+</body>
+</html>

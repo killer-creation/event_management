@@ -1,0 +1,206 @@
+@charset "UTF-8";
+    /* Background with gradient + animated circles */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6EE7B7, #3B82F6, #9333EA);
+      background-size: 400% 400%;
+      animation: gradientBG 8s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Glass card (form container) */
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      width: 350px;
+      max-width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeIn 1.2s ease;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    form:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+    }
+    
+    .back-btn-container {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 2;
+    }
+    
+    .back-btn {
+        background: #4682b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.3s;
+    }
+    
+    .back-btn:hover {
+        background: #36648b;
+        transform: scale(1.05);
+    }
+
+    label {
+      color: #f1f5f9;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: inset 2px 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      -moz-appearance: textfield;
+    }
+
+    /* Remove number arrows */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Hover + Focus Effects */
+    input:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 8px #FFD700, 0 0 12px #FFA500; /* golden glow */
+    }
+
+    input:focus {
+      background: #fff;
+      box-shadow: 0 0 12px #FFC107, 0 0 20px #FF9800; /* focus golden/orange glow */
+      border: 1px solid #FFD700;
+    }
+    
+    .button-group {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(90deg, #06b6d4, #9333ea);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.3);
+      flex-grow: 1;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 12px 24px rgba(0,0,0,0.4);
+      background: linear-gradient(90deg, #3b82f6, #9333ea);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+    
+    .btn-cancel {
+        background: #f44336;
+        box-shadow: 0px 6px 12px rgba(244, 67, 54, 0.3);
+    }
+    
+    .btn-cancel:hover {
+        background: #d32f2f;
+        box-shadow: 0px 12px 24px rgba(211, 47, 47, 0.4);
+    }
+
+    /* Subtle floating glow circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 10s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    .circle1 {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 15%;
+    }
+
+    .circle2 {
+      width: 300px;
+      height: 300px;
+      bottom: 15%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0%,100% {transform: translateY(0px);}
+      50% {transform: translateY(-40px);}
+    }
+
+    /* Responsive design */
+    @media (max-width: 480px) {
+      form {
+        width: 90%;
+        padding: 25px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+      .button-group {
+        flex-direction: column;
+      }
+    }

@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Animated background */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Navbar */
+nav {
+  background: rgba(34,34,34,0.95);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  position: relative;
+  z-index: 10;
+}
+nav h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(90deg, #ffcc00, #ff6600, #ff0066);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255,204,0,0.8);
+  animation: zoomGlow 3s infinite alternate;
+}
+
+@keyframes zoomGlow {
+  from { transform: scale(1); text-shadow: 0 0 15px rgba(255, 204, 0, 0.7); }
+  to { transform: scale(1.08); text-shadow: 0 0 30px rgba(255,102,0,1); }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  position: absolute;
+  right: 30px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 1.2rem;
+}
+
+nav ul li a:hover { color: #ffcc00; }
+
+/* Main */
+main {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.machine-category { margin-bottom: 50px; }
+
+.machine-category h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff6600;
+  border-bottom: 2px solid #ffcc00;
+  display: inline-block;
+  padding-bottom: 5px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.machine-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Base machine item style */
+.machine-item {
+  border-radius: 15px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.4s, box-shadow 0.4s;
+  animation: fadeIn 1.5s ease;
+  color: #333;
+}
+
+.machine-item:hover { transform: translateY(-8px) scale(1.03); }
+
+.machine-item img {
+  width: 320px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: transform 0.3s;
+}
+
+.machine-item img:hover { transform: scale(1.05); }
+
+.machine-item h3 { font-size: 1.3rem; margin-bottom: 10px; color: #222; }
+
+.price { font-weight: bold; color: #ff6600; margin-bottom: 10px; font-size: 1.1rem; }
+
+.book-now {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ffcc00;
+  color: #222;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+  font-size: 1.1rem;
+}
+
+.book-now:hover { background: #e6b800; transform: translateY(-2px); }
+
+/* Category-specific themes */
+.cold-pyro { background: linear-gradient(145deg, #ffefba, #ffffff); }
+.bubble { background: linear-gradient(145deg, #89f7fe, #66a6ff); }
+.led { background: linear-gradient(145deg, #fbc2eb, #a6c1ee); }
+.flame { background: linear-gradient(145deg, #ff9a9e, #fad0c4); }
+.paper { background: linear-gradient(145deg, #a1c4fd, #c2e9fb); }
+.fog { background: linear-gradient(145deg, #d4fc79, #96e6a1); }
+.foam { background: linear-gradient(145deg, #ffecd2, #fcb69f); }
+.sparkler { background: linear-gradient(145deg, #fceabb, #f8b500); }
+
+/* Hover glow matches theme */
+.cold-pyro:hover { box-shadow: 0 8px 25px rgba(255,223,100,0.7); }
+.bubble:hover { box-shadow: 0 8px 25px rgba(100,170,255,0.7); }
+.led:hover { box-shadow: 0 8px 25px rgba(180,100,220,0.7); }
+.flame:hover { box-shadow: 0 8px 25px rgba(255,120,100,0.7); }
+.paper:hover { box-shadow: 0 8px 25px rgba(120,180,255,0.7); }
+.fog:hover { box-shadow: 0 8px 25px rgba(120,220,150,0.7); }
+.foam:hover { box-shadow: 0 8px 25px rgba(255,180,120,0.7); }
+.sparkler:hover { box-shadow: 0 8px 25px rgba(250,200,0,0.7); }
+
+/* Footer */
+footer {
+  background: rgba(34,34,34,0.95);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+footer p { margin: 5px 0; }
+
+/* Modal Booking Form */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  text-align: left;
+}
+
+.modal-content h2 { text-align: center; margin-bottom: 20px; }
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover { color: #ff6600; }
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.modal-content input[readonly] {
+  background: #f0f0f0;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  background: #ffcc00;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content button:hover { background: #e6b800; }
+/* Back Button Styles */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: #cf6c17;
+    transform: translateX(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}

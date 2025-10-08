@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kranti Multipurpose Hall - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hall.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Header -->
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="hall_booking_form.html">Kranti Hall</a>
+      </div>
+      <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="hall_features.html">Features</a></li>
+        <li><a href="hall_galary.html">Gallery</a></li>
+        <li><a href="hall_booking_form.html" class="cta-button">Book Now</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h1>Your Premier Destination for Unforgettable Events</h1>
+      <p>Where every celebration is a masterpiece.</p>
+    </div>
+  </header>
+
+  <!-- Options Section -->
+  <main>
+    <div class="options-container">
+      <div class="option-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>To Book the Hall</h3>
+        <p>Click the button below to book the hall for your special occasions.</p>
+        <a href="hall_booking_form.html">Book Hall</a>
+      </div>
+
+      <div class="option-card">
+        <i class="fas fa-image"></i>
+        <h3>To See Hall Images</h3>
+        <p>Want to take a look at our hall interiors and setups? Browse the gallery below.</p>
+        <a href="hall_galary.html">Watch Gallery</a>
+      </div>
+
+      <div class="option-card">
+        <i class="fas fa-star"></i>
+        <h3> Hall Feaures</h3>
+        <p>Check out all the facilities and features available at our multipurpose hall.</p>
+        <a href="hall_features.html">Lookout Features</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Kranti Hall</h3>
+        <p>Providing the perfect venue for your most important moments.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="hall_features.html">Features</a></li>
+          <li><a href="hall_galary.html">Gallery</a></li>
+          <li><a href="hall_booking_form.html">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> NH4 Highway, City, State</p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> info@krantihall.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Kranti Multipurpose Hall. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // === Confetti Effect ===
+    const confettiCanvas = document.getElementById("confetti-canvas");
+    const ctx = confettiCanvas.getContext("2d");
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+
+    const confettiColors = ["#ff6f61", "#ffcc70", "#6a82fb", "#fc5c7d", "#38ef7d", "#00c6ff"];
+    const confetti = [];
+
+    function ConfettiPiece(x, y, color, size, speed) {
+      this.x = x;
+      this.y = y;
+      this.color = color;
+      this.size = size;
+      this.speed = speed;
+      this.rotation = Math.random() * 360;
+      this.rotationSpeed = Math.random() * 5;
+    }
+
+    function createConfetti() {
+      for (let i = 0; i < 70; i++) {
+        const x = Math.random() * confettiCanvas.width;
+        const y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+        const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        const size = Math.random() * 6 + 4;
+        const speed = Math.random() * 3 + 2;
+        confetti.push(new ConfettiPiece(x, y, color, size, speed));
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confetti.forEach(p => {
+        p.y += p.speed;
+        p.rotation += p.rotationSpeed;
+        if (p.y > confettiCanvas.height) {
+          p.y = -10;
+          p.x = Math.random() * confettiCanvas.width;
+        }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      });
+      requestAnimationFrame(animateConfetti);
+    }
+
+    createConfetti();
+    animateConfetti();
+
+    window.addEventListener("resize", () => {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>

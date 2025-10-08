@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hall Booking Form</title>
+<link rel="stylesheet" href="hall_booking.css">
+<style>
+  /* Simple modal styling */
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    background: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+  .close-payment-modal {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .pay-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .pay-btn:hover {
+    background: #005a9e;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background animation -->
+<div class="bokeh b1"></div>
+<div class="bokeh b2"></div>
+<div class="bokeh b3"></div>
+<div class="bokeh b4"></div>
+
+<!-- Hall Booking Form -->
+<form id="hallBookingForm">
+  <h2>Hall Booking Form</h2>
+  <a href="mobile responsive main hall page.html" class="back-btn">Back</a>
+  
+  <label for="event_name">Event Name:</label>
+  <input type="text" id="event_name" name="event_name" maxlength="40" required>
+
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
+
+  <label for="time">Time:</label>
+  <input type="time" id="time" name="time" required>
+
+  <label for="total_persons">Total Persons:</label>
+  <input type="number" id="total_persons" name="total_persons" min="1" required>
+
+  <label for="rent_display">Total Rent (₹):</label>
+  <input type="text" id="rent_display" value="250000" readonly>
+  <input type="hidden" id="rent" name="rent" value="250000">		
+
+  <button type="submit">Book Now</button>
+</form>
+
+<!-- Payment Modal -->
+<div id="paymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close-payment-modal">&times;</span>
+    <h2>Payment Details</h2>
+    <form id="paymentForm" action="PaymentServlet2" method="post">
+      <input type="hidden" id="eventDetails" name="event_details">
+      <input type="hidden" id="datetimeDetails" name="datetime_details">
+      <input type="hidden" id="personsDetails" name="persons_details">
+      <input type="hidden" id="rentAmount" name="rent">
+
+      <div style="text-align:center; padding: 20px;">
+        <h3>Total Payable: <span id="paymentTotal"></span></h3>
+        <br>
+        <label for="payment_method">Payment Method:</label>
+        <select id="payment_method" name="payment_method" required>
+          <option value="Online Payment">Online Payment</option>
+          <option value="Cash on Delivery">Cash on Delivery</option>
+        </select>
+      </div> 
+      <button type="submit" class="pay-btn">Pay Now</button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.getElementById('hallBookingForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Stop form submission
+
+  // Collect booking form data
+  const eventName = document.getElementById('event_name').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const persons = document.getElementById('total_persons').value;
+  const rent = document.getElementById('rent').value;
+
+  // Pass data into hidden fields in payment form
+  document.getElementById('eventDetails').value = `Event: ${eventName}`;
+  document.getElementById('datetimeDetails').value = `${date} ${time}`;
+  document.getElementById('personsDetails').value = persons;
+  document.getElementById('rentAmount').value = rent;
+
+  // Display payable amount
+  document.getElementById('paymentTotal').textContent = `₹${rent}`;
+
+  // Show payment modal
+  document.getElementById('paymentModal').style.display = 'block';
+});
+
+// Close the payment modal
+document.querySelector('.close-payment-modal').onclick = () => {
+  document.getElementById('paymentModal').style.display = 'none';
+};
+</script>
+
+</body>
+</html>

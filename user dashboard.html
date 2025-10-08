@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management Solutions</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="userdashboard.css">
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
+
+<header>
+  <div class="header-content">
+    <div class="hero-content">
+      <h1>Simplify Your Events, Magnify Your Memories</h1>
+      <p>From stunning decor to perfect venues, we've got you covered.</p>
+    </div>
+    <ul class="nav-links">
+      <li><a href="product.html">Buy Event Products</a></li>
+      <li><a href="machine_booking.html">Book Machines For Events</a></li>
+      <li><a href="mobile responsive main hall page.html">Booking Hall for Events</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="options-container">
+    <a href="product.html" class="option-card" data-symbol="🎁">
+      <i class="fas fa-magic"></i>
+      <h3>Event Decor & Supplies</h3>
+      <p>Elevate your event with our extensive collection of party supplies and custom decor.</p>
+      <span class="cta-link">Shop Now</span>
+    </a>
+
+    <a href="machine_booking.html" class="option-card" data-symbol="⚙️">
+      <i class="fas fa-cogs"></i>
+      <h3>Special Effect Machines</h3>
+      <p>Create unforgettable moments with high-quality machines for fog, bubbles, and more.</p>
+      <span class="cta-link">Rent Machines</span>
+    </a>
+
+    <a href="mobile responsive main hall page.html" class="option-card" data-symbol="🏠">
+      <i class="fas fa-building"></i>
+      <h3>Venue & Hall Booking</h3>
+      <p>Discover the ideal setting for any occasion with our premier multipurpose hall.</p>
+      <span class="cta-link">Book Hall</span>
+    </a>
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Event Solutions</h3>
+      <p>Your one-stop destination for hassle-free event planning.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="product.html">Buy Event Products</a></li>
+        <li><a href="machine_booking.html">Book Machines For Events</a></li>
+        <li><a href="mobile responsive main hall page.html">Booking Hall for Events</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Event Lane, Metropolis</p>
+      <p><i class="fas fa-phone"></i> +1 800-555-0199</p>
+      <p><i class="fas fa-envelope"></i> info@eventsolutions.com</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 Event Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Confetti Effect
+  const confettiCanvas = document.getElementById("confetti-canvas");
+  const ctx = confettiCanvas.getContext("2d");
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+  const confettiColors = ["#ff6f61", "#ffcc70", "#6a82fb", "#fc5c7d", "#38ef7d", "#00c6ff"];
+  const confetti = [];
+  function ConfettiPiece(x, y, color, size, speed) {
+    this.x = x; this.y = y; this.color = color; this.size = size;
+    this.speed = speed;
+    this.rotation = Math.random() * 360;
+    this.rotationSpeed = Math.random() * 5;
+  }
+  function createConfetti() {
+    for (let i = 0; i < 70; i++) {
+      const x = Math.random() * confettiCanvas.width;
+      const y = Math.random() * confettiCanvas.height - confettiCanvas.height;
+      const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+      const size = Math.random() * 6 + 4;
+      const speed = Math.random() * 3 + 2;
+      confetti.push(new ConfettiPiece(x, y, color, size, speed));
+    }
+  }
+  function animateConfetti() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confetti.forEach(p => {
+      p.y += p.speed;
+      p.rotation += p.rotationSpeed;
+      if (p.y > confettiCanvas.height) {
+        p.y = -10;
+        p.x = Math.random() * confettiCanvas.width;
+      }
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      ctx.restore();
+    });
+    requestAnimationFrame(animateConfetti);
+  }
+  createConfetti();
+  animateConfetti();
+
+  // Particle Background
+  const particlesCanvas = document.getElementById("particles-canvas");
+  const pCtx = particlesCanvas.getContext("2d");
+  particlesCanvas.width = window.innerWidth;
+  particlesCanvas.height = window.innerHeight;
+
+  const particles = [];
+  const particleCount = 100;
+  function Particle(x, y, radius, speedX, speedY, color) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.speedX = speedX;
+    this.speedY = speedY;
+    this.color = color;
+  }
+  function createParticles() {
+    for (let i = 0; i < particleCount; i++) {
+      const radius = Math.random() * 2 + 1;
+      const x = Math.random() * particlesCanvas.width;
+      const y = Math.random() * (particlesCanvas.height / 2);
+      const speedX = (Math.random() - 0.5) * 0.5;
+      const speedY = Math.random() * 0.5 + 0.2;
+      const color = "rgba(255,255,255,0.15)";
+      particles.push(new Particle(x, y, radius, speedX, speedY, color));
+    }
+  }
+  function animateParticles() {
+    pCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+    particles.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.y > particlesCanvas.height / 2) {
+        p.y = 0;
+        p.x = Math.random() * particlesCanvas.width;
+      }
+      pCtx.beginPath();
+      pCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      pCtx.fillStyle = p.color;
+      pCtx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  createParticles();
+  animateParticles();
+
+  // Resize handler
+  window.addEventListener("resize", () => {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+    particlesCanvas.width = window.innerWidth; 
+    particlesCanvas.height = window.innerHeight;
+  });
+
+  // Symbol Pop-up Animation
+  const optionCards = document.querySelectorAll('.option-card');
+  optionCards.forEach(card => {
+    const symbol = card.getAttribute('data-symbol');
+    const symbolElement = document.createElement('div');
+    symbolElement.className = 'symbol-pop';
+    symbolElement.textContent = symbol;
+    card.appendChild(symbolElement);
+    setInterval(() => {
+      const clone = symbolElement.cloneNode(true);
+      clone.style.left = Math.random() * (card.offsetWidth - 40) + 'px';
+      clone.style.top = Math.random() * (card.offsetHeight - 40) + 'px';
+      card.appendChild(clone);
+      setTimeout(() => clone.remove(), 1200);
+    }, 2000);
+  });
+</script>
+
+</body>
+</html>

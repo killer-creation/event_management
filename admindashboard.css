@@ -1,0 +1,255 @@
+@charset "UTF-8";
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            /* Dynamic background gradient and positioning */
+            background: linear-gradient(135deg, #16a085, #3498db, #8e44ad);
+            background-size: 300% 300%;
+            animation: background-pan 15s infinite ease;
+            position: relative;
+            /* Allow the page to scroll */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Add spacing between the nav and the cards */
+            min-height: 100vh;
+        }
+        
+        @keyframes background-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.2), transparent 70%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2), transparent 70%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.15), transparent 70%),
+                radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.1), transparent 70%);
+            animation: confetti-anim 25s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes confetti-anim {
+            from {
+                transform: translateY(-20%) scale(0.5) rotate(0deg);
+                opacity: 0.8;
+            }
+            to {
+                transform: translateY(120%) scale(1.5) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
+
+        /* Header and nav styles with a dark background and no spacing */
+        header {
+            background: rgba(44, 62, 80, 0.8);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 100%;
+            border-radius: 8px 8px 0 0; /* Rounded top corners only */
+            backdrop-filter: blur(5px);
+            margin-bottom: 0; /* Removed spacing */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: rgba(44, 62, 80, 0.8); /* Changed to match header background */
+            padding: 20px;
+            gap: 20px;
+            width: 100%;
+            border-radius: 0 0 8px 8px; /* Rounded bottom corners only */
+            backdrop-filter: blur(50px);
+            margin-bottom: 0; /* Removed spacing */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            background: #8c73e0; /* Changed to purple */
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out; /* Added smooth transition */
+        }
+
+        nav a:hover,
+        nav a:focus {
+            background: #ff914d; /* Changed to orange on hover */
+            transform: scale(1.05); /* Scales the link up by 5% */
+            box-shadow: 0 0 10px #ff914d, 0 0 20px #ff914d; /* Adds a glowing shadow */
+        }
+        
+        /* New styling for the extra-options container */
+        .extra-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+            margin-top: 20px; /* Added margin to separate from the nav */
+        }
+
+        /* Container for each product card, new styles to match the image */
+        .product-card {
+            max-width: 500px;
+            width: 90%;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease-in-out; /* Added smooth transition for hover effect */
+        }
+        
+        /* Hover effect for all product cards */
+        .product-card:hover,
+        .product-card:focus-within {
+            transform: scale(1.05); /* Scales the card up by 5% */
+        }
+
+        /* Specific glowing box-shadow for each card on hover */
+        .card-birthday:hover {
+            box-shadow: 0 0 10px #ffcccc, 0 0 20px #ffcccc;
+        }
+
+        .card-decoration:hover {
+            box-shadow: 0 0 10px #ccffe6, 0 0 20px #ccffe6;
+        }
+
+        .card-other:hover {
+            box-shadow: 0 0 10px #e6ccff, 0 0 20px #e6ccff;
+        }
+
+        .card-prod-payments:hover {
+            box-shadow: 0 0 10px #cce0ff, 0 0 20px #cce0ff;
+        }
+
+        .card-hall-payments:hover {
+            box-shadow: 0 0 10px #ffe6cc, 0 0 20px #ffe6cc;
+        }
+
+        .card-employee:hover {
+            box-shadow: 0 0 10px #ffb3b3, 0 0 20px #ffb3b3;
+        }
+
+        /* Individual card backgrounds and borders */
+        .card-birthday {
+            background-color: rgba(255, 230, 230, 0.7); /* Light pink */
+            border: 1px solid #ffcccc;
+        }
+
+        .card-decoration {
+            background-color: rgba(230, 255, 240, 0.7); /* Light green */
+            border: 1px solid #ccffe6;
+        }
+
+        .card-other {
+            background-color: rgba(240, 230, 255, 0.7); /* Light purple */
+            border: 1px solid #e6ccff;
+        }
+
+        .card-prod-payments {
+            background-color: rgba(230, 243, 255, 0.7); /* Light blue */
+            border: 1px solid #cce0ff;
+        }
+
+        .card-hall-payments {
+            background-color: rgba(255, 240, 230, 0.7); /* Light orange */
+            border: 1px solid #ffe6cc;
+        }
+
+        .card-employee {
+            background-color: rgba(255, 204, 204, 0.7); /* Light red/pink */
+            border: 1px solid #ffb3b3;
+        }
+
+        /* Heading and subtitle styles */
+        h3 {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+            padding-bottom: 5px;
+        }
+
+        h3 .icon {
+            margin-right: 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            margin: 0;
+            padding-bottom: 15px;
+        }
+
+        /* Button styling */
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button colors */
+        .button-birthday {
+            background-color: #ff914d; /* Orange */
+        }
+        .button-birthday:hover {
+            background-color: #e67e3a;
+        }
+
+        .button-decoration {
+            background-color: #27c897; /* Teal */
+        }
+        .button-decoration:hover {
+            background-color: #1f9e77;
+        }
+
+        .button-other {
+            background-color: #8c73e0; /* Purple */
+        }
+        .button-other:hover {
+            background-color: #7259c4;
+        }
+
+        .button-prod-payments {
+            background-color: #5d9cec; /* Blue */
+        }
+        .button-prod-payments:hover {
+            background-color: #4a8cd1;
+        }
+
+        .button-hall-payments {
+            background-color: #ffaa00; /* Amber */
+        }
+        .button-hall-payments:hover {
+            background-color: #e69a00;
+        }
+
+        .button-employee {
+            background-color: #e74c3c; /* Red */
+        }
+        .button-employee:hover {
+            background-color: #c0392b;
+        }

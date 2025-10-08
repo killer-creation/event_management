@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Important for mobile scaling -->
+<link rel="stylesheet" href="userlogin.css">
+</head>
+<body>
+  <div class="form-box">
+    <div class="back-btn-container">
+      <button type="button" class="back-btn" onclick="window.history.back()">&larr; Back</button>
+    </div>
+    <h2>🎶 User Login 🎶</h2>
+    <form id="userForm" action="UserLoginServlet" method="POST">
+      <label for="user_name">User Name</label>
+      <input type="text" id="user_name" name="user_name" required>
+
+      <label for="user_pass">Password</label>
+      <input type="password" id="user_pass" name="user_pass" required>
+      
+      <div class="button-group">
+        <button type="reset" class="btn-cancel">Cancel</button>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
